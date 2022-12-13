@@ -1,9 +1,9 @@
-package service;
+package com.ecommerce.service;
 
 import java.util.ArrayList;
 
-import domain.Cart;
-import domain.Product;
+import com.ecommerce.domain.Cart;
+import com.ecommerce.domain.Product;
 
 /**
  * Interface with the methods with the business logic related to the Cart
@@ -11,7 +11,7 @@ import domain.Product;
  * 
  * @author danie
  *
- */
+ */ 
 public interface EcommerceService {
 
 	/**

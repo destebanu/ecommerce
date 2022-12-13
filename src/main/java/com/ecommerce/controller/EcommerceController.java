@@ -1,4 +1,4 @@
-package controller;
+package com.ecommerce.controller;
 
 import java.util.ArrayList;
 
@@ -11,19 +11,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import domain.Cart;
-import domain.Product;
-import service.EcommerceService;
+import com.ecommerce.domain.Cart;
+import com.ecommerce.domain.Product;
+import com.ecommerce.service.EcommerceService;
 
 @RestController
 @RequestMapping(value = "/ecommerce")
 public class EcommerceController {
 
 	// Carts id variable
-	private Integer id_cart = 0;
-	
+	private static Integer id_cart = 0;
+
 	// List with carts created
-	private ArrayList<Cart> carts = new ArrayList<Cart>();
+	private static ArrayList<Cart> carts = new ArrayList<Cart>();
 
 	@Autowired
 	private EcommerceService ecommerceService;
@@ -47,8 +47,9 @@ public class EcommerceController {
 	 * @param id
 	 * @return
 	 */
-	@GetMapping(value = "/getcart/{id}")
+	@GetMapping(value = "/getcart/{id_cart}")
 	public ArrayList<Product> getCart(@PathVariable Integer id_cart) {
+		System.out.println("Hola tren");
 		return ecommerceService.getCart(id_cart, carts);
 	}
 
@@ -68,7 +69,7 @@ public class EcommerceController {
 	 * 
 	 * @param id_cart
 	 */
-	@PutMapping(value = "/deletecart/{id}")
+	@PutMapping(value = "/deletecart/{id_cart}")
 	public void deleteCart(@PathVariable Integer id_cart) {
 		this.carts = ecommerceService.deleteCart(id_cart, carts);
 

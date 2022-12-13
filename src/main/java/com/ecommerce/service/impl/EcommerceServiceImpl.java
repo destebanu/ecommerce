@@ -1,11 +1,13 @@
-package service.impl;
+package com.ecommerce.service.impl;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import domain.Cart;
-import domain.Product;
-import service.EcommerceService;
+import org.springframework.stereotype.Service;
+
+import com.ecommerce.domain.Cart;
+import com.ecommerce.domain.Product;
+import com.ecommerce.service.EcommerceService;
 
 /**
  * Service that implements the EcommerceService interface
@@ -13,6 +15,8 @@ import service.EcommerceService;
  * @author danie
  *
  */
+
+@Service
 public class EcommerceServiceImpl implements EcommerceService {
 
 	/**
