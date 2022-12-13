@@ -22,12 +22,12 @@ public interface EcommerceService {
 	public Cart createCart(Integer id);
 
 	/**
-	 * Obtains information of a cart given its id
+	 * Gets a Cart for a given id
 	 * 
 	 * @param id
 	 * @return
 	 */
-	public String[] getCartInfo(Integer id_cart);
+	public ArrayList<Product> getCart(Integer id_cart, ArrayList<Cart> carts);
 
 	/**
 	 * Adds products to a determined cart
@@ -37,9 +37,9 @@ public interface EcommerceService {
 	public void fillCart(Integer id_cart, ArrayList<Product> products);
 
 	/**
-	 * Deletes a cart given its id
+	 * Deletes a cart for a given id
 	 * 
 	 * @param id_cart
 	 */
-	public void eraseCart(Integer id_cart);
+	public ArrayList<Cart> deleteCart(Integer id_cart, ArrayList<Cart> carts);
 }

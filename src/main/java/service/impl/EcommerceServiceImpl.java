@@ -20,22 +20,27 @@ public class EcommerceServiceImpl implements EcommerceService {
 	 * @return
 	 */
 	public Cart createCart(Integer id) {
-		ArrayList<Product> products = new ArrayList();
+
+		ArrayList<Product> products = new ArrayList<Product>();
 		Cart cart = new Cart(id, products);
 
 		return cart;
 	}
 
 	/**
-	 * Obtains information of a cart given its id
+	 * Gets a Cart for a given id
 	 * 
 	 * @param id
 	 * @return
 	 */
 	@Override
-	public String[] getCartInfo(Integer id_cart) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<Product> getCart(Integer id_cart, ArrayList<Cart> carts) {
+
+		ArrayList<Product> productList = new ArrayList<Product>();
+		for (Cart c : carts)
+			productList = (c.getId_cart().equals(id_cart)) ? c.getProducts() : new ArrayList<Product>();
+
+		return productList;
 	}
 
 	/**
@@ -50,14 +55,18 @@ public class EcommerceServiceImpl implements EcommerceService {
 	}
 
 	/**
-	 * Deletes a cart given its id
+	 * Deletes a cart for a given id
 	 * 
 	 * @param id_cart
 	 */
 	@Override
-	public void eraseCart(Integer id_cart) {
-		// TODO Auto-generated method stub
+	public ArrayList<Cart> deleteCart(Integer id_cart, ArrayList<Cart> carts) {
 
+		for (int i = 0; i < carts.size(); i++)
+			if (carts.get(i).getId_cart().equals(id_cart))
+				carts.remove(i);
+
+		return carts;
 	}
 
 }
