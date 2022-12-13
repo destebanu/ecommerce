@@ -3,6 +3,7 @@ package com.ecommerce.controller;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,6 +28,16 @@ public class EcommerceController {
 
 	@Autowired
 	private EcommerceService ecommerceService;
+	
+	/**
+	 * The carts will reset every 10 minutes
+	 */
+	@Scheduled (cron = "0 0/10 * * * *")
+	public void cartTTL() {
+		this.carts = new ArrayList<Cart>();
+		this.id_cart = 0;
+		System.out.println("The carts have been reset.");
+	}
 
 	/**
 	 * Creates a new Cart
@@ -49,7 +60,6 @@ public class EcommerceController {
 	 */
 	@GetMapping(value = "/getcart/{id_cart}")
 	public ArrayList<Product> getCart(@PathVariable Integer id_cart) {
-		System.out.println("Hola tren");
 		return ecommerceService.getCart(id_cart, carts);
 	}
 
