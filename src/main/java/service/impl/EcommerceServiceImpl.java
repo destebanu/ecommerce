@@ -1,6 +1,7 @@
 package service.impl;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import domain.Cart;
 import domain.Product;
@@ -49,8 +50,18 @@ public class EcommerceServiceImpl implements EcommerceService {
 	 * @param products
 	 */
 	@Override
-	public void fillCart(Integer id_cart, ArrayList<Product> products) {
-		// TODO Auto-generated method stub
+	public ArrayList<Cart> fillCart(Integer id_cart, ArrayList<Product> products, ArrayList<Cart> carts) {
+
+		Iterator<Cart> itr = carts.listIterator();
+
+		while (itr.hasNext()) {
+			if (itr.next().getId_cart().equals(id_cart))
+				itr.remove();
+		}
+
+		carts.add(new Cart(id_cart, products));
+
+		return carts;
 
 	}
 

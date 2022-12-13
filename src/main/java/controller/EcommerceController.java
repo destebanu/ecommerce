@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -52,14 +53,14 @@ public class EcommerceController {
 	}
 
 	/**
-	 * Adds products to a determined cart
+	 * Adds products to the present cart
 	 * 
 	 * @param id_cart
 	 * @param products
 	 */
 	@PostMapping(value = "/fillcart", consumes = { "application/json" })
-	public void fillCart(Integer id_cart, ArrayList<Product> products) {
-		ecommerceService.fillCart(id_cart, products);
+	public void fillCart(@RequestBody ArrayList<Product> products) {
+		this.carts = ecommerceService.fillCart(id_cart, products, carts);
 	}
 
 	/**

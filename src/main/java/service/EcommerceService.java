@@ -34,7 +34,7 @@ public interface EcommerceService {
 	 * 
 	 * @param products
 	 */
-	public void fillCart(Integer id_cart, ArrayList<Product> products);
+	public ArrayList<Cart> fillCart(Integer id_cart, ArrayList<Product> products, ArrayList<Cart> carts);
 
 	/**
 	 * Deletes a cart for a given id
